@@ -275,7 +275,7 @@
     </div>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', (event) => {
     // 選択肢の定義
     const options = [
         { value: 3, text: 'はい / 強く当てはまる' },
@@ -284,23 +284,25 @@ document.addEventListener('DOMContentLoaded', function() {
         { value: 0, text: 'いいえ / 当てはまらない' }
     ];
 
-    // すべての質問に選択肢を追加
-    document.querySelectorAll('.options').forEach(optionsContainer => {
+    // すべての.optionsクラスを持つ要素に対して選択肢を追加
+    const optionsContainers = document.querySelectorAll('.options');
+    optionsContainers.forEach(container => {
         options.forEach(option => {
             const button = document.createElement('button');
             button.className = 'option-btn';
             button.textContent = option.text;
-            button.dataset.value = option.value;
-            optionsContainer.appendChild(button);
-
+            button.setAttribute('data-value', option.value);
+            
             button.addEventListener('click', function() {
-                // 同じ質問の他の選択肢のselectedを解除
-                optionsContainer.querySelectorAll('.option-btn').forEach(b => {
-                    b.classList.remove('selected');
+                // 同じ質問の他の選択肢から選択状態を解除
+                container.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.remove('selected');
                 });
-                // クリックされた選択肢をselected状態に
+                // クリックされたボタンを選択状態に
                 this.classList.add('selected');
             });
+            
+            container.appendChild(button);
         });
     });
 
@@ -309,7 +311,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const results = {};
         const categories = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         
-        // カテゴリーごとの集計
         categories.forEach(category => {
             const questions = document.querySelectorAll(`[data-category="${category}"]`);
             let total = 0;
@@ -318,14 +319,13 @@ document.addEventListener('DOMContentLoaded', function() {
             questions.forEach(question => {
                 const selectedButton = question.querySelector('.option-btn.selected');
                 if (selectedButton) {
-                    total += parseInt(selectedButton.dataset.value);
+                    total += parseInt(selectedButton.getAttribute('data-value'));
                     answered++;
                 }
             });
 
-            // スコアの計算（回答された質問のみで平均を計算）
             results[category] = {
-                score: answered > 0 ? total : 0,
+                score: total,
                 answered: answered,
                 percentage: answered > 0 ? (total / (answered * 3) * 100).toFixed(1) : 0
             };
