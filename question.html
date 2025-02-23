@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>パーソナリティ分析テスト</title>
+    <title>性嗜好セルフチェックテスト</title>
     <style>
         body {
             font-family: sans-serif;
@@ -89,6 +89,12 @@
         button#calculate:hover {
             background: #0056b3;
         }
+        .diagnosis {
+            margin-top: 10px;
+            font-style: italic;
+            color: #333;
+            line-height: 1.6;
+        }
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -104,8 +110,10 @@
     </style>
 </head>
 <body>
-    <h1>パーソナリティ分析テスト</h1>
+    <h1>性嗜好セルフチェックテスト</h1>
+    <p>各質問に対して最も近い選択肢をクリックし、「結果を計算する」を押してください。</p>
     <div id="quiz">
+        <!-- A. プレイの幅・冒険心 -->
         <div class="question-container">
             <div class="question" data-category="A" data-question="1">
                 1. 新しいプレイや未知のシチュエーションに強い好奇心を持っている。
@@ -125,6 +133,7 @@
             </div>
         </div>
 
+        <!-- B. ライトSM -->
         <div class="question-container">
             <div class="question" data-category="B" data-question="5">
                 5. 軽い拘束（手錠、アイマスク、ロープなど）に興奮を感じる。
@@ -144,6 +153,7 @@
             </div>
         </div>
 
+        <!-- C. ハードSM -->
         <div class="question-container">
             <div class="question" data-category="C" data-question="9">
                 9. ピンチクリップやロウソクなど、強い痛み・刺激があるプレイに興味がある。
@@ -163,6 +173,7 @@
             </div>
         </div>
 
+        <!-- D. 寝取られ/スワッピング -->
         <div class="question-container">
             <div class="question" data-category="D" data-question="13">
                 13. パートナーが他人と性行為をするところを想像すると興奮する。
@@ -182,6 +193,7 @@
             </div>
         </div>
 
+        <!-- E. フェティシズム -->
         <div class="question-container">
             <div class="question" data-category="E" data-question="17">
                 17. 特定の身体パーツ（足、手、首筋など）を見るだけで強く惹かれる。
@@ -201,6 +213,7 @@
             </div>
         </div>
 
+        <!-- F. 露出・覗き -->
         <div class="question-container">
             <div class="question" data-category="F" data-question="21">
                 21. 他人に見られるかもしれないスリルに快感を覚える。
@@ -220,6 +233,7 @@
             </div>
         </div>
 
+        <!-- G. ロールプレイ・非日常 -->
         <div class="question-container">
             <div class="question" data-category="G" data-question="25">
                 25. コスプレやキャラクターになりきって行うプレイが大好き / 興味がある。
@@ -239,6 +253,7 @@
             </div>
         </div>
 
+        <!-- H. マニアック・エクストリーム -->
         <div class="question-container">
             <div class="question" data-category="H" data-question="29">
                 29. 肉体的リスクが高い行為（窒息プレイなど）に強い興味や魅力を感じる。
@@ -268,7 +283,7 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', (event) => {
-    // 選択肢の定義
+    // 【1】選択肢を定義
     const options = [
         { value: 3, text: 'はい / 強く当てはまる' },
         { value: 2, text: 'どちらかといえば当てはまる' },
@@ -284,7 +299,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             button.className = 'option-btn';
             button.textContent = option.text;
             button.setAttribute('data-value', option.value);
-            
+
             button.addEventListener('click', function() {
                 // 同じ質問の他の選択肢から選択状態を解除
                 container.querySelectorAll('.option-btn').forEach(btn => {
@@ -293,12 +308,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 // クリックされたボタンを選択状態に
                 this.classList.add('selected');
             });
-            
+
             container.appendChild(button);
         });
     });
 
-    // 回答を簡略化する関数
+    // 回答を簡略化する（表示用）の関数
     function simplifyAnswer(text) {
         if (text.includes('強く当てはまる')) return 'はい';
         if (text.includes('どちらかといえば')) return 'やや';
@@ -306,20 +321,78 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return 'いいえ';
     }
 
-    // 結果計算ボタンのイベントリスナー
+    // 【2】スコアに応じた診断メッセージを返す辞書（カテゴリごと）
+    // 各カテゴリ最大12点（4問×3点）を想定して、0-4 / 5-8 / 9-12 の3段階に分けています。
+    const categoryCommentary = {
+        'A': {
+            low:  '【冒険心 低】新しいプレイへの興味は低め。安心感や安定感を重視するタイプかもしれません。',
+            mid:  '【冒険心 中】ある程度の好奇心があり、新しいことにも比較的前向き。パートナーとの相談次第で幅を広げられそう。',
+            high: '【冒険心 高】非常にチャレンジ精神旺盛。新しいプレイやシチュエーションを積極的に試す傾向が強いです。'
+        },
+        'B': {
+            low:  '【ライトSM 低】ソフトなSM要素にはあまり関心がないか、抵抗があるかもしれません。',
+            mid:  '【ライトSM 中】軽い拘束やスパンキングなどのライトSMを楽しめる可能性がありそうです。',
+            high: '【ライトSM 高】ライトSMのプレイが大好物かも？ ソフトな刺激や主従関係に強く惹かれる傾向。'
+        },
+        'C': {
+            low:  '【ハードSM 低】強い痛みや精神的支配にはあまり興味がないタイプ。',
+            mid:  '【ハードSM 中】痛みや屈辱などにやや興奮を感じることも。状況によっては楽しめる可能性があります。',
+            high: '【ハードSM 高】かなりハードなSM嗜好をお持ちの可能性。サディスト/マゾヒストとして強い一面がありそうです。'
+        },
+        'D': {
+            low:  '【寝取られ系 低】パートナーの浮気やスワッピングへの興奮はあまり感じないタイプ。',
+            mid:  '【寝取られ系 中】シチュエーション次第では、寝取られ/スワッピングに興味を抱くことがあるかもしれません。',
+            high: '【寝取られ系 高】パートナーが他者と関係するシーンや複数プレイへの強い興味・興奮を覚えるタイプ。'
+        },
+        'E': {
+            low:  '【フェチ度 低】特定の部位・匂い・衣装への強い執着はあまりないかも。',
+            mid:  '【フェチ度 中】ある程度フェチの要素があり、対象次第では強く興奮する可能性があります。',
+            high: '【フェチ度 高】特定のパーツ・匂い・衣装などへのこだわりが強く、フェチの満足度がとても大切になるタイプ。'
+        },
+        'F': {
+            low:  '【露出・覗き 低】見られる・見るというシチュエーションにはさほど興味がないようです。',
+            mid:  '【露出・覗き 中】多少のスリルや voyeuristic な要素に興味を示すかもしれません。',
+            high: '【露出・覗き 高】見せる・見る・スリルを味わう行為に強い関心があります。背徳感が興奮のカギになるタイプ。'
+        },
+        'G': {
+            low:  '【ロールプレイ 低】演技やファンタジー要素にはあまり惹かれない、現実志向かもしれません。',
+            mid:  '【ロールプレイ 中】コスプレや物語設定など、場合によっては楽しめる余地がありそうです。',
+            high: '【ロールプレイ 高】コスチュームや設定をしっかり作り込むほど燃えるタイプ。非日常感に強く魅力を感じます。'
+        },
+        'H': {
+            low:  '【マニアック嗜好 低】いわゆるエクストリーム系の性癖にはほぼ興味がないようです。',
+            mid:  '【マニアック嗜好 中】特殊プレイやタブー要素に少し興味はあるものの、抵抗感も少なくないかもしれません。',
+            high: '【マニアック嗜好 高】かなり尖った趣味嗜好を持っている可能性大。安全・合意には一層の注意が必要です。'
+        }
+    };
+
+    // カテゴリーの名前（表示用）
+    const categoryNames = {
+        'A': 'プレイの幅・冒険心',
+        'B': 'ライトSM',
+        'C': 'ハードSM',
+        'D': '寝取られ / スワッピング',
+        'E': 'フェティシズム',
+        'F': '露出・覗き',
+        'G': 'ロールプレイ・非日常',
+        'H': 'マニアック / エクストリーム'
+    };
+
+    // 診断コメントを返す関数（スコアに応じて3段階に分ける例）
+    function getDiagnosis(category, score) {
+        if (score <= 4) {
+            return categoryCommentary[category].low;
+        } else if (score <= 8) {
+            return categoryCommentary[category].mid;
+        } else {
+            return categoryCommentary[category].high;
+        }
+    }
+
+    // 【3】結果を計算するボタンのイベントリスナー
     document.getElementById('calculate').addEventListener('click', function() {
-        const results = {};
         const categories = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-        const categoryNames = {
-            'A': 'プレイの幅・冒険心',
-            'B': 'ライトSM',
-            'C': 'ハードSM',
-            'D': '寝取られ/スワッピング',
-            'E': 'フェティシズム',
-            'F': '露出・覗き',
-            'G': 'ロールプレイ・非日常',
-            'H': 'マニアック/エクストリーム'
-        };
+        const results = {};
 
         // カテゴリーごとの集計
         categories.forEach(category => {
@@ -337,24 +410,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     
                     total += value;
                     answered++;
-                    answerDetails.push(`Q${questionNum}:${answerText}`);
+                    answerDetails.push(`Q${questionNum}: ${answerText}`);
                 }
             });
 
             results[category] = {
                 score: total,
                 answered: answered,
-                percentage: answered > 0 ? (total / (answered * 3) * 100).toFixed(1) : 0,
                 details: answerDetails
             };
         });
 
-        // 結果の表示
+        // 結果表示する要素
         const resultsDiv = document.getElementById('results');
         const categoryResults = document.getElementById('category-results');
         categoryResults.innerHTML = '';
 
-        // 全体の合計点を計算
+        // 全体の合計点と回答数を計算
         let totalScore = 0;
         let totalAnswered = 0;
         categories.forEach(category => {
@@ -362,7 +434,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             totalAnswered += results[category].answered;
         });
 
-        // 全体の結果を表示
+        // 【A】全体の結果を表示
         const totalDiv = document.createElement('div');
         totalDiv.className = 'category-score';
         totalDiv.innerHTML = `
@@ -373,28 +445,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
         `;
         categoryResults.appendChild(totalDiv);
 
-        // カテゴリーごとの結果を表示
+        // 【B】カテゴリーごとの結果を表示
         categories.forEach(category => {
-            const result = results[category];
+            const { score, answered, details } = results[category];
+            // 最高スコアは4問×3点=12点
+            const percentage = answered > 0 ? (score / (answered * 3) * 100).toFixed(1) : 0;
+            
             const div = document.createElement('div');
             div.className = 'category-score';
             
+            // 診断コメントを取得
+            const diagnosisText = getDiagnosis(category, score);
+
+            // カテゴリー名・スコアなどを表示
             div.innerHTML = `
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <strong>${categoryNames[category]}</strong>
-                    <span>${result.percentage}% (${result.score}点)</span>
+                    <span>${percentage}% (${score}点)</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress" style="width: ${result.percentage}%"></div>
+                    <div class="progress" style="width: ${percentage}%;"></div>
                 </div>
                 <div style="font-size: 0.8em; color: #666; margin-top: 4px;">
-                    ${result.details.join(' | ')}
+                    回答詳細: ${details.join(' | ')}
+                </div>
+                <!-- 診断コメントを表示 -->
+                <div class="diagnosis">
+                    ${diagnosisText}
                 </div>
             `;
             
             categoryResults.appendChild(div);
         });
 
+        // 結果表示領域を可視化
         resultsDiv.style.display = 'block';
         resultsDiv.scrollIntoView({ behavior: 'smooth' });
     });
