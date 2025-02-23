@@ -19,14 +19,6 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .category-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
         .question {
             margin-bottom: 15px;
             padding: 10px;
@@ -123,16 +115,13 @@
 <body>
     <h1>性嗜好セルフチェックテスト</h1>
     <p class="summary">
-        自分の性的嗜好を大まかに把握するためのセルフチェックテストです。<br>
-        全36問（A～Hの32問 + Iセクション4問）に回答し「結果を計算する」を押すと、各カテゴリのスコアと診断コメントが表示されます。<br>
-        また「I: S/M診断」では、より直接的に S寄り・M寄りを推測する仕組みも用意しています。<br>
-        ※これはあくまでも簡易的な自己分析用ツールであり、医療・心理学的な正式診断を目的としたものではありません。
+        回答が終わったら「結果を計算する」を押してください。<br>
+        各カテゴリのスコアと診断コメントが表示されます。
     </p>
 
     <div id="quiz">
-        <!-- A. プレイの幅・冒険心 -->
+        <!-- A: プレイの幅・冒険心 (タイトル非表示) -->
         <div class="question-container">
-            <div class="category-title">A: プレイの幅・冒険心</div>
             <div class="question" data-category="A" data-question="1">
                 1. 新しいプレイや未知のシチュエーションには、好奇心を強くそそられる方だ。
                 <div class="options"></div>
@@ -151,9 +140,8 @@
             </div>
         </div>
 
-        <!-- B. ライトSM -->
+        <!-- B: ライトSM (タイトル非表示) -->
         <div class="question-container">
-            <div class="category-title">B: ライトSM</div>
             <div class="question" data-category="B" data-question="5">
                 5. 手錠・アイマスクなど、軽い拘束プレイにドキドキする。
                 <div class="options"></div>
@@ -172,9 +160,8 @@
             </div>
         </div>
 
-        <!-- C. ハードSM -->
+        <!-- C: ハードSM (タイトル非表示) -->
         <div class="question-container">
-            <div class="category-title">C: ハードSM</div>
             <div class="question" data-category="C" data-question="9">
                 9. ピンチクリップやロウソクなど、はっきりとした痛みがある道具に興味がある。
                 <div class="options"></div>
@@ -193,128 +180,122 @@
             </div>
         </div>
 
-        <!-- D. 寝取られ/スワッピング -->
+        <!-- I: S/M診断 (タイトル非表示 / Cに近い位置に配置) -->
         <div class="question-container">
-            <div class="category-title">D: 寝取られ / スワッピング</div>
-            <div class="question" data-category="D" data-question="13">
-                13. パートナーが他の人と関係を持つのを想像すると、嫉妬だけでなく興奮も感じる。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="D" data-question="14">
-                14. 3Pやグループでのプレイに、少し興味をそそられることがある。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="D" data-question="15">
-                15. 「寝取られ」シチュエーションを妄想すると、興奮度が上がるタイプだ。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="D" data-question="16">
-                16. 誰かのパートナーを自分が奪う・寝取るような行為にも背徳感と魅力を感じる。
-                <div class="options"></div>
-            </div>
-        </div>
-
-        <!-- E. フェティシズム -->
-        <div class="question-container">
-            <div class="category-title">E: フェティシズム</div>
-            <div class="question" data-category="E" data-question="17">
-                17. 足・指・首筋など、特定の身体パーツへの執着やフェチ意識がある。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="E" data-question="18">
-                18. パートナーの体臭や下着の匂いなど、匂いフェチ的な要素が大きな興奮につながる。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="E" data-question="19">
-                19. ランジェリーや特殊な衣装（レザー、ラバーなど）がないと物足りないことがある。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="E" data-question="20">
-                20. 「フェチ対象」がないと盛り上がらない、またはコレクションをしている。
-                <div class="options"></div>
-            </div>
-        </div>
-
-        <!-- F. 露出・覗き -->
-        <div class="question-container">
-            <div class="category-title">F: 露出・覗き</div>
-            <div class="question" data-category="F" data-question="21">
-                21. 他人に見られるかもしれない緊張感が、むしろ興奮に変わることがある。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="F" data-question="22">
-                22. 自分の性的行為を第三者に覗かれたり、見られたりすることを考えると刺激的だ。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="F" data-question="23">
-                23. 他人の行為を“盗み見”するシチュエーションにも背徳感と興味をそそられる。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="F" data-question="24">
-                24. 人前や屋外でのスリルある行為に憧れる気持ちがある。
-                <div class="options"></div>
-            </div>
-        </div>
-
-        <!-- G. ロールプレイ・非日常 -->
-        <div class="question-container">
-            <div class="category-title">G: ロールプレイ・非日常</div>
-            <div class="question" data-category="G" data-question="25">
-                25. コスプレや役になりきって行うプレイをすると、普段より大胆になれる気がする。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="G" data-question="26">
-                26. ストーリーやセリフを設定して“演じる”ことで、興奮が高まると感じる。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="G" data-question="27">
-                27. 魔法やファンタジー、SFなど非現実的な世界観を絡めるとさらに盛り上がる。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="G" data-question="28">
-                28. 声や言葉責め、ストーリー展開など「演技的」な要素があると燃えやすい。
-                <div class="options"></div>
-            </div>
-        </div>
-
-        <!-- H. マニアック・エクストリーム -->
-        <div class="question-container">
-            <div class="category-title">H: マニアック / エクストリーム</div>
-            <div class="question" data-category="H" data-question="29">
-                29. 窒息プレイや極限的な拘束など、リスクが高い行為に強い魅力を感じる。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="H" data-question="30">
-                30. 食べ物や体液など、一般的にはタブー視される要素を絡めても楽しめそう。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="H" data-question="31">
-                31. タトゥーやピアッシング、身体改造を性感と結びつけることに興味がある。
-                <div class="options"></div>
-            </div>
-            <div class="question" data-category="H" data-question="32">
-                32. 友人にも言えないような特殊な性癖を持っていると自覚している。
-                <div class="options"></div>
-            </div>
-        </div>
-
-        <!-- I. S/M診断（新規追加） -->
-        <div class="question-container">
-            <div class="category-title">I: S/M診断</div>
             <div class="question" data-category="I" data-question="33">
-                33. 自分が相手をリードし、痛がらせたり恥ずかしがらせたりする姿を見るとゾクゾクする。
+                13. 相手をリードし、痛がらせたり恥ずかしがらせたりする姿を見るとゾクゾクする。
                 <div class="options"></div>
             </div>
             <div class="question" data-category="I" data-question="34">
-                34. 自分が支配され、責められる状況になると強い興奮を覚える。
+                14. 自分が支配され、責められるような立場になると強い興奮を覚える。
                 <div class="options"></div>
             </div>
             <div class="question" data-category="I" data-question="35">
-                35. 相手が嫌がったり悲鳴をあげたりするのを見ると、さらに攻めたくなる衝動がある。
+                15. 相手が嫌がったり悲鳴をあげたりするほど、さらに攻めたくなる衝動がある。
                 <div class="options"></div>
             </div>
             <div class="question" data-category="I" data-question="36">
-                36. 自分が辱められたり痛みを与えられると、かえってゾクゾクしてしまう。
+                16. 自分が辱められたり痛みを与えられると、かえってゾクゾクしてしまう。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <!-- D: 寝取られ/スワッピング (タイトル非表示) -->
+        <div class="question-container">
+            <div class="question" data-category="D" data-question="13">
+                17. パートナーが他の人と関係を持つのを想像すると、嫉妬だけでなく興奮も感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="D" data-question="14">
+                18. 3Pやグループでのプレイに、少し興味をそそられることがある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="D" data-question="15">
+                19. 「寝取られ」シチュエーションを妄想すると、興奮度が上がるタイプだ。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="D" data-question="16">
+                20. 誰かのパートナーを自分が奪う・寝取るような行為にも背徳感と魅力を感じる。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <!-- E: フェティシズム (タイトル非表示) -->
+        <div class="question-container">
+            <div class="question" data-category="E" data-question="17">
+                21. 足・指・首筋など、特定の身体パーツへの執着やフェチ意識がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="E" data-question="18">
+                22. パートナーの体臭や下着の匂いなど、匂いフェチ的な要素が大きな興奮につながる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="E" data-question="19">
+                23. ランジェリーや特殊な衣装（レザー、ラバーなど）がないと物足りないことがある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="E" data-question="20">
+                24. 「フェチ対象」がないと盛り上がらない、またはコレクションをしている。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <!-- F: 露出・覗き (タイトル非表示) -->
+        <div class="question-container">
+            <div class="question" data-category="F" data-question="21">
+                25. 他人に見られるかもしれない緊張感が、むしろ興奮に変わることがある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="F" data-question="22">
+                26. 自分の性的行為を第三者に覗かれたり、見られたりすることを考えると刺激的だ。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="F" data-question="23">
+                27. 他人の行為を“盗み見”するシチュエーションにも背徳感と興味をそそられる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="F" data-question="24">
+                28. 人前や屋外でのスリルある行為に憧れる気持ちがある。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <!-- G: ロールプレイ・非日常 (タイトル非表示) -->
+        <div class="question-container">
+            <div class="question" data-category="G" data-question="25">
+                29. コスプレや役になりきって行うプレイをすると、普段より大胆になれる気がする。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="G" data-question="26">
+                30. ストーリーやセリフを設定して“演じる”ことで、興奮が高まると感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="G" data-question="27">
+                31. 魔法やファンタジー、SFなど非現実的な世界観を絡めるとさらに盛り上がる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="G" data-question="28">
+                32. 声や言葉責め、ストーリー展開など「演技的」な要素があると燃えやすい。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <!-- H: マニアック・エクストリーム (タイトル非表示) -->
+        <div class="question-container">
+            <div class="question" data-category="H" data-question="29">
+                33. 窒息プレイや極限的な拘束など、リスクが高い行為に強い魅力を感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="H" data-question="30">
+                34. 食べ物や体液など、一般的にはタブー視される要素を絡めても楽しめそう。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="H" data-question="31">
+                35. タトゥーやピアッシング、身体改造を性感と結びつけることに興味がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="H" data-question="32">
+                36. 友人にも言えないような特殊な性癖を持っていると自覚している。
                 <div class="options"></div>
             </div>
         </div>
@@ -328,8 +309,8 @@
     </div>
 
 <script>
-window.addEventListener('DOMContentLoaded', (event) => {
-    // 【1】選択肢を定義（4段階）
+window.addEventListener('DOMContentLoaded', () => {
+    // 【1】選択肢（4段階）
     const options = [
         { value: 3, text: 'はい / 強く当てはまる' },
         { value: 2, text: 'どちらかといえば当てはまる' },
@@ -337,123 +318,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
         { value: 0, text: 'いいえ / 当てはまらない' }
     ];
 
-    // すべての .options 要素に対して、上記の選択肢ボタンを生成
-    const optionsContainers = document.querySelectorAll('.options');
-    optionsContainers.forEach(container => {
-        options.forEach(option => {
-            const button = document.createElement('button');
-            button.className = 'option-btn';
-            button.textContent = option.text;
-            button.setAttribute('data-value', option.value);
+    // 質問ごとの選択肢を生成
+    document.querySelectorAll('.options').forEach(container => {
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = opt.text;
+            btn.dataset.value = opt.value.toString();
 
-            // ボタンクリックで選択を切り替える
-            button.addEventListener('click', function() {
-                // 同じ質問の他の選択肢を選択解除
-                container.querySelectorAll('.option-btn').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
-                // クリックされたボタンを選択状態に
+            btn.addEventListener('click', function() {
+                container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
                 this.classList.add('selected');
             });
-
-            container.appendChild(button);
+            container.appendChild(btn);
         });
     });
 
-    // 【2】診断コメント（カテゴリごとに5段階の範囲）
-    //   1カテゴリ = 4問×3点 = 最大12点
-    //   スコア帯 : 0-2, 3-5, 6-8, 9-10, 11-12
-    const categoryCommentary = {
-        'A': {
-            range0_2:  '【冒険心：極めて控えめ】普段どおりの安定したプレイを好む傾向が強く、新しい試みに対しては抵抗や不安が先に立ちやすいかもしれません。',
-            range3_5:  '【冒険心：やや低い】多少の興味はあるものの、実際に踏み込むハードルが高いタイプ。慣れたプレイの範囲内で楽しむのが安心という気持ちがあるでしょう。',
-            range6_8:  '【冒険心：中程度】新しいプレイにもある程度前向きで、パートナー次第ではいろいろと冒険してみたい派。安全策とコミュニケーションが鍵です。',
-            range9_10: '【冒険心：高い】未知の刺激にワクワクするタイプ。積極的にいろんなプレイを試してみたい好奇心を持っていますが、リスク管理には注意。',
-            range11_12:'【冒険心：非常に高い】刺激を求める探究心が非常に強く、普通では物足りないと感じがち。パートナーとの合意と安全確認を常に忘れずに。'
-        },
-        'B': {
-            range0_2:  '【ライトSM傾向：ほぼ皆無】痛みや拘束は苦手な傾向が強く、甘い雰囲気やソフトな愛撫を好むタイプかもしれません。',
-            range3_5:  '【ライトSM傾向：控えめ】少しなら刺激や軽い拘束も楽しめるかも、という程度。あまり強い痛みや支配感には抵抗があるでしょう。',
-            range6_8:  '【ライトSM傾向：中】程よい痛みや拘束が「スパイス」になると感じるタイプ。ソフトな主従関係を楽しむ下地があります。',
-            range9_10: '【ライトSM傾向：高め】手錠やスパンキング、乱暴めのプレイに魅力を感じることが多いはず。相手との事前の意思疎通が大事です。',
-            range11_12:'【ライトSM傾向：非常に高い】「ライト」の域を超えそうなほど強い刺激を求めるかも。いっそハードSMに足を踏み入れる可能性も？'
-        },
-        'C': {
-            range0_2:  '【ハードSM傾向：低い】強い痛みや徹底的な支配・被支配にはほぼ興味がなさそう。どちらかといえばソフトなタッチを好みます。',
-            range3_5:  '【ハードSM傾向：やや低め】少し激しいプレイに興味があるものの、本格的な鞭や屈辱的シチュエーションには戸惑いがあるタイプ。',
-            range6_8:  '【ハードSM傾向：中】多少の痛みや屈辱が快感につながることがあり、サディスト/マゾヒスト的な一面が見え隠れしています。',
-            range9_10: '【ハードSM傾向：高い】かなり強い痛みや陵辱的な要素にも興奮を覚えるタイプ。セーフワードや事前打ち合わせが必須です。',
-            range11_12:'【ハードSM傾向：非常に高い】相当ディープなSMに魅力を感じる可能性大。本格的なS/Mプレイを楽しむ素質があり、自己管理と安全対策が極めて重要。'
-        },
-        'D': {
-            range0_2:  '【寝取られ・スワッピング：ほぼ興味なし】パートナーの浮気やシェアなど考えたくない、あるいは嫉妬心が強く不安が大きいタイプです。',
-            range3_5:  '【寝取られ・スワッピング：やや低め】少しの妄想なら楽しめるけど、実際はあまり現実的に考えられない。パートナーを独占したい意識がやや優勢。',
-            range6_8:  '【寝取られ・スワッピング：中】妄想レベルではなかなか興奮できるが、実行にはハードルがあるかも。パートナーと話し合う余地があります。',
-            range9_10: '【寝取られ・スワッピング：高め】パートナーが他人と絡むシチュエーションに強いエロティシズムを感じるタイプ。複数プレイやスワッピングにも比較的好奇心旺盛。',
-            range11_12:'【寝取られ・スワッピング：非常に高い】嫉妬や背徳感が快感に直結しやすいタイプ。実際に行うなら慎重なルール設定とパートナーの合意が絶対条件。'
-        },
-        'E': {
-            range0_2:  '【フェチ度：ほぼ皆無】特定のパーツや匂いには大きくこだわらず、全体的に受け入れやすいオールラウンダータイプ。',
-            range3_5:  '【フェチ度：やや控えめ】多少気になる部分やアイテムはあるが、それがないとダメというほどではない。普通のプレイでも十分に満足可能。',
-            range6_8:  '【フェチ度：中】足フェチ・匂いフェチ・ランジェリー好きなど、特定要素が刺激を大きく増幅するタイプ。フェチ要素を取り入れるとさらに高まる。',
-            range9_10: '【フェチ度：高め】特定のフェチを強く求める傾向。お気に入りのアイテムや状況が揃わないと物足りないと感じやすいかも。',
-            range11_12:'【フェチ度：非常に高い】フェチの対象が性行為の中心にあるほど強い執着を持つタイプ。コレクションや特定シチュエーションへのこだわりが特に強い。'
-        },
-        'F': {
-            range0_2:  '【露出・覗き：低い】人に見られる可能性や、他人を覗き見る行為には大きな抵抗がある。落ち着けるプライベート空間での行為を好む。',
-            range3_5:  '【露出・覗き：やや低め】ちょっとした背徳感には惹かれつつ、実行にはためらいが強い。危険や違法行為は絶対避けたいと思っているタイプ。',
-            range6_8:  '【露出・覗き：中】「見られるかも」「隠れて覗きたい」といったシチュエーションが妄想をかき立てる。ある程度のスリルを楽しむ可能性あり。',
-            range9_10: '【露出・覗き：高め】人前や屋外、または覗き見のシチュに強い興奮を感じやすい。自制心を失わないように注意が必要。',
-            range11_12:'【露出・覗き：非常に高い】かなり危険な状況でも燃えてしまう可能性がある。法的トラブル回避や安全確保が最重要課題。'
-        },
-        'G': {
-            range0_2:  '【ロールプレイ欲：ほとんどなし】コスプレや設定を作り込むよりも、自然体のセックスを好む。無理に演出しなくても十分楽しめるタイプ。',
-            range3_5:  '【ロールプレイ欲：やや低め】多少は興味があるが、がっつり演じるのは照れ臭い・恥ずかしいと感じるかもしれません。簡単な小道具程度なら楽しいと思えるかも。',
-            range6_8:  '【ロールプレイ欲：中】非日常感を求める傾向があり、キャラ設定やストーリー演出で普段と違う自分を楽しめるタイプ。',
-            range9_10: '【ロールプレイ欲：高め】脚本を用意したり、世界観をしっかり作り込むほど燃える。言葉責めや特殊設定で大きく盛り上がれる可能性大。',
-            range11_12:'【ロールプレイ欲：非常に高い】もはや演劇さながらにキャラになりきるのが当たり前。大掛かりなシチュエーションこそ至高で、想像力を存分に活かせるタイプ。'
-        },
-        'H': {
-            range0_2:  '【マニアック度：非常に低い】タブーや極端なプレイには強い抵抗感がある。スタンダードな行為を安心して楽しみたいタイプ。',
-            range3_5:  '【マニアック度：やや低め】ちょっと興味はあっても、実際に試すには不安の方が大きい。妄想だけで楽しむことが多いかもしれません。',
-            range6_8:  '【マニアック度：中】一般的にはタブーな要素にも好奇心を抱きやすい。状況やパートナー次第では踏み込んでしまう可能性あり。',
-            range9_10: '【マニアック度：高め】普通のプレイでは満足できず、アブノーマルで刺激的な行為を求めるタイプ。安全管理を徹底しないと危険。',
-            range11_12:'【マニアック度：非常に高い】周囲に理解されにくいほど過激な嗜好を持つ可能性がある。リスクが高いプレイも検討しがちなので注意と信頼関係が不可欠。'
-        },
-        'I': {
-            // Iカテゴリ（S/M診断の4問）のスコアに対するコメント。
-            // ただし、後述の関数 "determineSMFromICategory()" でさらに詳細な S/M 判定を行います。
-            range0_2:  '【S/M指向：ほぼなし】S的にもM的にもほとんど当てはまらないため、SM自体にあまり興味がない可能性が高いです。',
-            range3_5:  '【S/M指向：控えめ】多少SやMの要素はあるかもしれませんが、どちらかといえばソフトな方が合うかもしれません。',
-            range6_8:  '【S/M指向：中程度】SかMか、もしくは両方をバランスよく楽しめる兆候あり。痛みや屈辱の快感をある程度理解できそう。',
-            range9_10: '【S/M指向：高め】S/M的な要素がかなり強い。相手を責めたい、責められたい気持ちがはっきりあるはず。',
-            range11_12:'【S/M指向：非常に高い】完全にS/Mの世界に深く魅了される傾向が強いです。どちらかに強く偏る、あるいは両刀である可能性も高いでしょう。'
-        }
-    };
-
-    // 【3】カテゴリ表示名
-    const categoryNames = {
-        'A': 'プレイの幅・冒険心',
-        'B': 'ライトSM',
-        'C': 'ハードSM',
-        'D': '寝取られ / スワッピング',
-        'E': 'フェティシズム',
-        'F': '露出・覗き',
-        'G': 'ロールプレイ・非日常',
-        'H': 'マニアック / エクストリーム',
-        'I': 'S/M診断'
-    };
-
-    // 【4】スコア帯を判定する関数
-    function getCommentKey(score) {
-        if (score <= 2) return 'range0_2';
-        if (score <= 5) return 'range3_5';
-        if (score <= 8) return 'range6_8';
-        if (score <= 10) return 'range9_10';
-        return 'range11_12';
-    }
-
-    // 選択肢テキストを簡略化（表示用）
+    // 表示用に回答を簡略化
     function simplifyAnswer(text) {
         if (text.includes('強く当てはまる')) return '強い同意';
         if (text.includes('どちらかといえば')) return 'やや同意';
@@ -461,146 +342,207 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return '否定';
     }
 
-    // 【5】Iカテゴリの回答から、S度/M度を直接判定する
-    // 質問33と35 → S傾向 (相手を責める興奮)
-    // 質問34と36 → M傾向 (自分が責められる興奮)
+    // パーセントを5%刻みに丸める
+    function toNearest5Percent(value) {
+        return Math.round(value / 5) * 5;
+    }
+
+    // 質問カテゴリの日本語ラベル（内部的にはA～Iで管理）
+    const categoryNames = {
+        'A': 'プレイの幅・冒険心',
+        'B': 'ライトSM',
+        'C': 'ハードSM',
+        'I': 'S/M診断', // 追加セクション
+        'D': '寝取られ / スワッピング',
+        'E': 'フェティシズム',
+        'F': '露出・覗き',
+        'G': 'ロールプレイ・非日常',
+        'H': 'マニアック / エクストリーム'
+    };
+
+    // スコア帯ごとの長文コメント
+    // 0-2, 3-5, 6-8, 9-10, 11-12 の5段階
+    const categoryCommentary = {
+        'A': {
+            range0_2:  '【冒険心：ごく控えめ】普段の安定したプレイを好みがちで、未知の挑戦は少し苦手かも。落ち着ける空間と慣れた流れを重視し、安全や安心感を何より大事にするタイプです。',
+            range3_5:  '【冒険心：やや低め】新しいことに興味はあるものの、積極的に踏み込むには少し戸惑いを感じることが多いかもしれません。パートナーとの相談次第で徐々に範囲を広げられそうです。',
+            range6_8:  '【冒険心：中程度】わりと好奇心が旺盛で、新しいプレイにも前向き。安定と刺激のバランスを取りながら、いろいろと試せる柔軟さを持っています。',
+            range9_10: '【冒険心：高め】変化や刺激を求める傾向が強く、普通のプレイに物足りなさを感じることも。未知のものを積極的に取り入れたいタイプですが、安全策を忘れないようにしましょう。',
+            range11_12:'【冒険心：非常に高い】常に新鮮な体験を追い求め、大胆なアイデアにも魅力を感じる超好奇心派。挑戦する気持ちが強い分、リスク管理やパートナーの同意をしっかりとることが大切です。'
+        },
+        'B': {
+            range0_2:  '【ライトSM傾向：ほぼ無し】拘束や軽い痛み、主従関係にあまり魅力を感じないタイプ。ソフトで優しいスキンシップを中心に、穏やかに楽しむ方が性に合っているかもしれません。',
+            range3_5:  '【ライトSM傾向：やや低い】多少の刺激や束縛は興味あるものの、少し怖さや抵抗感が先立つことも。きっかけがあれば楽しめる可能性がありますが、無理は禁物。',
+            range6_8:  '【ライトSM傾向：中程度】軽いスパンキングや拘束は「ほどよいスパイス」として楽しめるタイプ。ソフトな主従関係や少し強めの刺激をエッセンスに取り入れると盛り上がります。',
+            range9_10: '【ライトSM傾向：高い】軽めと言いつつ、そこそこ強い刺激や縛りも十分に楽しめるかも。乱暴な扱いにドキドキしたり、軽い支配・被支配に性的興奮を覚えやすいタイプです。',
+            range11_12:'【ライトSM傾向：非常に高い】かなり強い刺激を求めがちで、もはやライトの域を越えかけているかも。ハードSMへ進む可能性もあるので、パートナーと丁寧にコミュニケーションしてください。'
+        },
+        'C': {
+            range0_2:  '【ハードSM傾向：極めて低い】強い痛みや深い支配・屈辱感には興味がなく、むしろ苦手意識が強いかもしれません。穏やかで安心できるプレイが向いているでしょう。',
+            range3_5:  '【ハードSM傾向：やや低め】多少ハードな要素に惹かれつつも、本格的な加虐・被虐プレイには抵抗や怖さを感じやすいタイプ。興味はあるが一歩踏み込む勇気が出ないかもしれません。',
+            range6_8:  '【ハードSM傾向：中程度】痛みや屈辱と快感を結びつける感覚をある程度理解できるタイプ。サディスト/マゾヒスト寄りの特性が見え隠れしており、TPOをわきまえれば楽しめそう。',
+            range9_10: '【ハードSM傾向：高め】かなり強い刺激や支配欲・被支配欲にも興奮を覚える傾向あり。鞭やロウソクなど、本格的なSMにも興味を持ちやすいタイプです。セーフワード等の安全策が必須。',
+            range11_12:'【ハードSM傾向：非常に高い】深い痛みや陵辱的シチュエーションを大いに求めるディープSM嗜好。サディスト/マゾヒストいずれか、もしくは両面が強く、合意と安全管理が極めて重要です。'
+        },
+        'I': {
+            range0_2:  '【S/M指向：きわめて薄い】相手を責めるのも責められるのもピンとこないタイプかもしれません。SM自体への興味が低く、ノーマルプレイを好む傾向が強いでしょう。',
+            range3_5:  '【S/M指向：控えめ】加虐・被虐どちらも興味はある程度あるが、熱中するほどではない印象。ソフトなSMなら楽しめる可能性がありますが、深く入り込むには躊躇がありそうです。',
+            range6_8:  '【S/M指向：中程度】SかMか、あるいは両方に興味があるタイプ。痛みや屈辱にも一定の魅力を感じているかもしれません。パートナー次第で世界が広がるでしょう。',
+            range9_10: '【S/M指向：高い】かなり攻めたいor攻められたい欲求が強く、SM要素に強い魅力を感じているはず。どちらかに偏っているか、両刀スイッチも含めて自己分析すると面白いでしょう。',
+            range11_12:'【S/M指向：非常に高い】SMに対して非常に強い関心と快感を見出すタイプ。加虐・被虐への欲求が際立っている可能性が高く、自分の嗜好を理解してくれるパートナー探しが重要です。'
+        },
+        'D': {
+            range0_2:  '【寝取られ・スワッピング：興味ほぼなし】パートナーが他の人と関係するのは考えたくない、もしくは強い拒否感があるタイプ。独占欲が比較的強いか、一対一を大事にする傾向。',
+            range3_5:  '【寝取られ・スワッピング：やや低め】妄想レベルで楽しめることはあっても、実際に行うのはハードルが高いかもしれません。嫉妬心や不安が先立ちやすいタイプです。',
+            range6_8:  '【寝取られ・スワッピング：中程度】想像すると興奮を覚えるものの、リアルに実践するには勇気やパートナーとの話し合いが必須。嫉妬と快感の狭間を楽しむ素質あり。',
+            range9_10: '【寝取られ・スワッピング：高い】複数プレイやスワッピングへの興味が強く、パートナーが他人と絡む姿にも独特の官能を感じるタイプ。合意やルール作りを慎重に行いましょう。',
+            range11_12:'【寝取られ・スワッピング：非常に高い】嫉妬心と背徳感が大きな快感へ直結しやすい究極の寝取られ嗜好。実践には大きなリスクも伴うため、パートナーとの信頼関係が特に重要です。'
+        },
+        'E': {
+            range0_2:  '【フェチ度：ごく低い】特定の部位や匂いにこだわるよりも、全体的に広く受け入れられるオールラウンダー。特別なアイテムや衣装がなくても十分満足できます。',
+            range3_5:  '【フェチ度：やや抑えめ】多少の嗜好やこだわりはあるものの、それが絶対条件というほど強くはないタイプ。ある程度の工夫があれば十分楽しめます。',
+            range6_8:  '【フェチ度：中程度】足や下着、匂いなど、何らかの要素に強く惹かれる傾向。好きなポイントが刺激されると一気に興奮が高まりやすいでしょう。',
+            range9_10: '【フェチ度：高い】フェチ対象がないと物足りなさを感じることも多く、ランジェリーや匂いなどの要素がプレイの満足度を大きく左右するタイプ。パートナーの理解が重要です。',
+            range11_12:'【フェチ度：非常に高い】特定のフェチがセックスの大部分を支配し、コレクションやディテールへのこだわりが強い傾向。独自の世界観を理解してくれる相手なら、濃密な快感が得られます。'
+        },
+        'F': {
+            range0_2:  '【露出・覗き：ごく低い】人前や覗き見などの背徳的要素に苦手意識が強く、プライベート空間で穏やかに行為を楽しむスタイルを好むでしょう。',
+            range3_5:  '【露出・覗き：やや低め】少しスリルには惹かれても、実際に行動するには戸惑いが大きいタイプ。ソフトな背徳感の妄想で満足できるかもしれません。',
+            range6_8:  '【露出・覗き：中程度】「見られるかも」「他人をこっそり覗きたい」という背徳感に惹かれる素質アリ。状況次第で実践にも踏み込む可能性があります。',
+            range9_10: '【露出・覗き：高い】公の場や屋外での行為、あるいは覗き見などに強い興奮を覚えるタイプ。安全面や法的リスクを十分に把握して行動する必要があります。',
+            range11_12:'【露出・覗き：非常に高い】背徳的・危険なほど燃える傾向が強く、ギリギリのスリルを求める可能性大。高リスク行為になりがちなので、慎重な判断が欠かせません。'
+        },
+        'G': {
+            range0_2:  '【ロールプレイ欲：低い】コスプレや設定づくりよりも、自然体での行為を好むタイプ。過度な演出には興味がないか、恥ずかしさが先立つでしょう。',
+            range3_5:  '【ロールプレイ欲：やや控えめ】多少は興味があるものの、大掛かりな設定には乗り切れないかもしれません。軽いコスチュームや簡単な小道具であれば楽しめる余地あり。',
+            range6_8:  '【ロールプレイ欲：中程度】ある程度の演出やキャラクター設定にワクワクするタイプ。非日常感を上手く取り入れると日々のマンネリ解消にも効果的です。',
+            range9_10: '【ロールプレイ欲：高い】凝った設定やストーリー展開、キャラになりきる演技に本格的な楽しみを見いだす傾向。普段と違う自分になり切る解放感に強く惹かれます。',
+            range11_12:'【ロールプレイ欲：非常に高い】舞台装置や脚本レベルまでこだわりたいほど、没入型プレイを追求するタイプ。創造力をフルに使って濃厚なセッションを楽しめそうです。'
+        },
+        'H': {
+            range0_2:  '【マニアック度：非常に低い】極端なプレイやタブー要素には抵抗感が強く、オーソドックスかつ安全な行為を望むスタイル。冒険心はあまり感じないでしょう。',
+            range3_5:  '【マニアック度：低め】少し興味はあるものの、実際に試すには不安が先行しがち。妄想で楽しむ程度なら満足できるかもしれません。',
+            range6_8:  '【マニアック度：中程度】タブーや危険寄りの要素にも惹かれる好奇心を持ち合わせており、条件が整えば試してみたいと思うことがあるかもしれません。',
+            range9_10: '【マニアック度：高い】一般的にはかなりアブノーマルなプレイを求める傾向が強く、普通の行為では物足りなく感じるかも。安全管理とパートナーの理解が不可欠です。',
+            range11_12:'【マニアック度：非常に高い】誰にも言えないような尖った性嗜好を抱えている可能性が大。危険を伴うプレイにも興味を示しがちなので、リスク回避や入念な話し合いが重要となります。'
+        }
+    };
+
+    // S/Mを直接判定するためのロジック（Iカテゴリ）
     function determineSMFromICategory(results) {
-        const iCategory = results['I'];
-        let sScore = 0;
-        let mScore = 0;
+        // IのQ(33,34,35,36) → 本文では 13,14,15,16になっているがdata-questionは33,34,35,36
+        const sScore = getQuestionValue('I', '33') + getQuestionValue('I', '35'); // 攻め寄り
+        const mScore = getQuestionValue('I', '34') + getQuestionValue('I', '36'); // 受け寄り
 
-        // 回答詳細を取得
-        // Q33, Q35 -> S
-        // Q34, Q36 -> M
-        const q33Val = getQuestionValue('I', '33');
-        const q34Val = getQuestionValue('I', '34');
-        const q35Val = getQuestionValue('I', '35');
-        const q36Val = getQuestionValue('I', '36');
-
-        sScore = q33Val + q35Val;
-        mScore = q34Val + q36Val;
-
-        // 各々最大6点（3点×2問）
-        // sScore と mScore を比べて結果を返す
         let smComment = '';
         if (sScore === 0 && mScore === 0) {
-            smComment = 'S・Mの両面とも当てはまりがなく、SMにはあまり関心がないかもしれません。';
+            smComment = 'S的にもM的にも当てはまる部分が少なく、SMプレイはあまり好みではないのかもしれません。';
         } else if (sScore > mScore) {
             if (sScore >= 5) {
-                smComment = '相手を責めたい・苦しめたい欲求が非常に強く、【S寄り】の本能がはっきり感じられるタイプです。';
+                smComment = '相手を痛めつけたり羞恥を与えることに強い興奮を覚える、【S寄り】の傾向がはっきり感じられます。激しさを求めるほど安全策を重視してください。';
             } else {
-                smComment = 'どちらかといえば相手を責める快感を求める【S寄り】ですが、状況次第でM的要素も持ち合わせている可能性があります。';
+                smComment = '相手を攻めたい気持ちがMへの興味より強めで、【ややS寄り】と言えそうです。ただし状況次第では受け側にも回れる可能性もあります。';
             }
         } else if (mScore > sScore) {
             if (mScore >= 5) {
-                smComment = '自分が責められたい・辱められたい欲求が強く、【M寄り】の本能が強く出ているタイプです。';
+                smComment = '辱められたり痛みを受けることに快感を見いだしやすい、【M寄り】の傾向が強いです。相手との信頼関係とセーフワードをしっかり設定しましょう。';
             } else {
-                smComment = 'どちらかといえば責められたい欲求を感じる【M寄り】ですが、シチュエーションによってはSになる要素も残っているかもしれません。';
+                smComment = '責められる快感を求める度合いが少し高めの【ややM寄り】。ただ、シチュエーションによってはSに回ることもあり得ます。';
             }
         } else {
             // sScore === mScore
             if (sScore === 0) {
-                smComment = 'SM指向が特に見られないか、ごく薄い可能性があります。';
+                smComment = 'SMへの興味は薄いようです。どちらにもあまり当てはまらず、ノーマル寄りといえそうです。';
             } else if (sScore <= 2) {
-                smComment = 'SとMが同程度であり、どちらも軽度。あまりSM要素は強くないものの、両方に少し関心があるかも。';
+                smComment = 'SもMも軽度ですが同程度。少しずつ両方に興味がある、いわゆる【ライトな両刀】の可能性があります。';
             } else {
-                smComment = 'SとM両面が同じくらい強め。いわゆる【スイッチ】傾向で、相手や気分に合わせてSにもMにもなれるタイプです。';
+                smComment = '【スイッチ気質】が高く、SとMをシーンや相手によって切り替えられるタイプ。自分の欲求とパートナーの希望に応じて多彩なプレイが楽しめそうです。';
             }
         }
-
         return smComment;
     }
 
-    // 質問の選択値を取得する補助関数
+    // 質問の選択値を取得する
     function getQuestionValue(category, questionNum) {
-        const elem = document.querySelector(`[data-category="${category}"][data-question="${questionNum}"]`);
-        if (!elem) return 0;
-        const selected = elem.querySelector('.option-btn.selected');
-        return selected ? parseInt(selected.getAttribute('data-value')) : 0;
+        const qElem = document.querySelector(`[data-category="${category}"][data-question="${questionNum}"]`);
+        if (!qElem) return 0;
+        const selected = qElem.querySelector('.option-btn.selected');
+        return selected ? parseInt(selected.dataset.value) : 0;
     }
 
-    // 【6】「結果を計算する」ボタンクリックで集計
-    document.getElementById('calculate').addEventListener('click', function() {
-        // カテゴリ一覧（A～H + I）
-        const categories = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+    // 結果計算ボタン
+    document.getElementById('calculate').addEventListener('click', () => {
+        const categories = ['A','B','C','I','D','E','F','G','H'];
         const results = {};
 
-        // 各カテゴリの点数を集計
-        categories.forEach(category => {
-            const questions = document.querySelectorAll(`[data-category="${category}"]`);
+        // 集計
+        categories.forEach(cat => {
+            const questions = document.querySelectorAll(`[data-category="${cat}"]`);
             let total = 0;
             let answered = 0;
             let detailArray = [];
 
-            questions.forEach(question => {
-                const selectedButton = question.querySelector('.option-btn.selected');
-                if (selectedButton) {
-                    const value = parseInt(selectedButton.getAttribute('data-value'));
-                    const qNum = question.getAttribute('data-question');
-                    const ans = simplifyAnswer(selectedButton.textContent);
-
-                    total += value;
+            questions.forEach(q => {
+                const selected = q.querySelector('.option-btn.selected');
+                if (selected) {
+                    const val = parseInt(selected.dataset.value);
+                    total += val;
                     answered++;
-                    detailArray.push(`Q${qNum}: ${ans}`);
+                    const ansText = simplifyAnswer(selected.textContent);
+                    detailArray.push(`Q${q.dataset.question}: ${ansText}`);
                 }
             });
 
-            results[category] = {
-                score: total,
-                answered: answered,
-                details: detailArray
-            };
+            results[cat] = { score: total, answered, details: detailArray };
         });
 
-        // 結果表示用の要素
+        // 結果エリア
         const resultsDiv = document.getElementById('results');
         const categoryResults = document.getElementById('category-results');
         categoryResults.innerHTML = '';
 
-        // 全体合計＆回答数
-        let totalScore = 0;
-        let totalAnswered = 0;
+        // 全体集計
+        let totalScore = 0, totalAnswered = 0;
         categories.forEach(cat => {
             totalScore += results[cat].score;
             totalAnswered += results[cat].answered;
         });
 
-        // 全体の結果（総合点・回答数など）
+        // 全体の合計を表示（シンプルに）
         const totalDiv = document.createElement('div');
         totalDiv.className = 'category-score';
         totalDiv.innerHTML = `
-            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                <strong>総合結果</strong>
-                <span>合計 ${totalScore}点 (回答数: ${totalAnswered}/36)</span>
+            <div style="margin-bottom: 10px;">
+                <strong>総合スコア：${totalScore}点 / 回答数：${totalAnswered}問</strong>
             </div>
         `;
         categoryResults.appendChild(totalDiv);
 
-        // カテゴリごとの結果を表示
-        categories.forEach(category => {
-            const { score, answered, details } = results[category];
-            // 1問最大3点×4問=12点が最高（Iも同じ）
-            const maxPossible = answered * 3; 
-            const percentage = (answered > 0 && maxPossible > 0)
-                ? ((score / maxPossible) * 100).toFixed(1)
-                : 0;
+        // 各カテゴリ結果
+        categories.forEach(cat => {
+            const { score, answered, details } = results[cat];
+            const maxPossible = answered * 3; // 4問回答していれば最大12点
+            let rawPercent = 0;
+            if (answered > 0 && maxPossible > 0) {
+                rawPercent = (score / maxPossible) * 100;
+            }
+            const displayPercent = toNearest5Percent(rawPercent); // 5%刻みに丸める
 
-            // コメントキーを取得
-            const commentKey = getCommentKey(score);
-            const commentText = categoryCommentary[category][commentKey];
+            // スコア帯キーを判定
+            const commentKey = getScoreRangeKey(score);
+            const commentText = categoryCommentary[cat][commentKey];
 
-            // HTML要素を生成
+            // 表示要素
             const div = document.createElement('div');
             div.className = 'category-score';
             div.innerHTML = `
-                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                    <strong>${categoryNames[category]}</strong>
-                    <span>${percentage}% (${score}点 / 最大12点)</span>
+                <div style="margin-bottom: 5px; font-weight: bold;">
+                    ${categoryNames[cat]}：${displayPercent}% ( ${score}点 / 最大12点 )
                 </div>
                 <div class="progress-bar">
-                    <div class="progress" style="width: ${percentage}%"></div>
+                    <div class="progress" style="width: ${displayPercent}%;"></div>
                 </div>
-                <div style="font-size: 0.8em; color: #666; margin-top: 4px;">
+                <div style="font-size: 0.9em; color: #555; margin-top: 4px;">
                     回答詳細: ${details.join(' | ')}
                 </div>
                 <div class="diagnosis">
@@ -610,17 +552,29 @@ window.addEventListener('DOMContentLoaded', (event) => {
             categoryResults.appendChild(div);
         });
 
-        // ■ Iカテゴリの結果を基に、S/M をさらに詳細に判定
+        // S/M診断を追加表示（Iカテゴリの詳細判定）
         const smDiv = document.createElement('div');
         smDiv.className = 'sm-result';
         const smAnalysis = determineSMFromICategory(results);
-        smDiv.innerHTML = `<strong>■ S or M 傾向（Iカテゴリからの詳細推定）</strong><br>${smAnalysis}`;
+        smDiv.innerHTML = `
+            <strong>S or M の傾向（追加分析）</strong><br>
+            ${smAnalysis}
+        `;
         categoryResults.appendChild(smDiv);
 
         // 結果ブロックを表示
         resultsDiv.style.display = 'block';
         resultsDiv.scrollIntoView({ behavior: 'smooth' });
     });
+
+    // スコアに応じたキーを返す（0-2,3-5,6-8,9-10,11-12）
+    function getScoreRangeKey(score) {
+        if (score <= 2) return 'range0_2';
+        if (score <= 5) return 'range3_5';
+        if (score <= 8) return 'range6_8';
+        if (score <= 10) return 'range9_10';
+        return 'range11_12';
+    }
 });
 </script>
 </body>
