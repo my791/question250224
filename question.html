@@ -266,7 +266,7 @@
         </div>
     </div>
 
-    <script>
+<script>
 window.addEventListener('DOMContentLoaded', (event) => {
     // 選択肢の定義
     const options = [
@@ -298,36 +298,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
+    // 回答を簡略化する関数
+    function simplifyAnswer(text) {
+        if (text.includes('強く当てはまる')) return 'はい';
+        if (text.includes('どちらかといえば')) return 'やや';
+        if (text.includes('どちらでもない')) return '中';
+        return 'いいえ';
+    }
+
     // 結果計算ボタンのイベントリスナー
     document.getElementById('calculate').addEventListener('click', function() {
         const results = {};
         const categories = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-        
-        categories.forEach(category => {
-            const questions = document.querySelectorAll(`[data-category="${category}"]`);
-            let total = 0;
-            let answered = 0;
-            
-            questions.forEach(question => {
-                const selectedButton = question.querySelector('.option-btn.selected');
-                if (selectedButton) {
-                    total += parseInt(selectedButton.getAttribute('data-value'));
-                    answered++;
-                }
-            });
-
-            results[category] = {
-                score: total,
-                answered: answered,
-                percentage: answered > 0 ? (total / (answered * 3) * 100).toFixed(1) : 0
-            };
-        });
-
-        // 結果の表示
-        const resultsDiv = document.getElementById('results');
-        const categoryResults = document.getElementById('category-results');
-        categoryResults.innerHTML = '';
-
         const categoryNames = {
             'A': 'プレイの幅・冒険心',
             'B': 'ライトSM',
@@ -339,6 +321,59 @@ window.addEventListener('DOMContentLoaded', (event) => {
             'H': 'マニアック/エクストリーム'
         };
 
+        // カテゴリーごとの集計
+        categories.forEach(category => {
+            const questions = document.querySelectorAll(`[data-category="${category}"]`);
+            let total = 0;
+            let answered = 0;
+            let answerDetails = [];
+
+            questions.forEach(question => {
+                const selectedButton = question.querySelector('.option-btn.selected');
+                if (selectedButton) {
+                    const value = parseInt(selectedButton.getAttribute('data-value'));
+                    const questionNum = question.getAttribute('data-question');
+                    const answerText = simplifyAnswer(selectedButton.textContent);
+                    
+                    total += value;
+                    answered++;
+                    answerDetails.push(`Q${questionNum}:${answerText}`);
+                }
+            });
+
+            results[category] = {
+                score: total,
+                answered: answered,
+                percentage: answered > 0 ? (total / (answered * 3) * 100).toFixed(1) : 0,
+                details: answerDetails
+            };
+        });
+
+        // 結果の表示
+        const resultsDiv = document.getElementById('results');
+        const categoryResults = document.getElementById('category-results');
+        categoryResults.innerHTML = '';
+
+        // 全体の合計点を計算
+        let totalScore = 0;
+        let totalAnswered = 0;
+        categories.forEach(category => {
+            totalScore += results[category].score;
+            totalAnswered += results[category].answered;
+        });
+
+        // 全体の結果を表示
+        const totalDiv = document.createElement('div');
+        totalDiv.className = 'category-score';
+        totalDiv.innerHTML = `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <strong>総合結果</strong>
+                <span>合計 ${totalScore}点 (回答数: ${totalAnswered}/32)</span>
+            </div>
+        `;
+        categoryResults.appendChild(totalDiv);
+
+        // カテゴリーごとの結果を表示
         categories.forEach(category => {
             const result = results[category];
             const div = document.createElement('div');
@@ -351,6 +386,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 </div>
                 <div class="progress-bar">
                     <div class="progress" style="width: ${result.percentage}%"></div>
+                </div>
+                <div style="font-size: 0.8em; color: #666; margin-top: 4px;">
+                    ${result.details.join(' | ')}
                 </div>
             `;
             
