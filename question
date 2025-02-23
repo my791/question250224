@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パーソナリティ分析テスト</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .question-container {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .category-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .option-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option-btn:hover {
+            background: #f0f0f0;
+        }
+        .option-btn.selected {
+            background: #007bff;
+            color: white;
+            border-color: #0056b3;
+        }
+        .results {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        .category-score {
+            margin-bottom: 15px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #007bff;
+            transition: width 0.3s;
+        }
+        button#calculate {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        button#calculate:hover {
+            background: #0056b3;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .options {
+                flex-direction: column;
+            }
+            .option-btn {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>パーソナリティ分析テスト</h1>
+    <div id="quiz">
+        <div class="question-container">
+            <div class="category-title">A. プレイの幅・冒険心</div>
+            <div class="question" data-category="A" data-question="1">
+                1. 新しいプレイや未知のシチュエーションに強い好奇心を持っている。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="A" data-question="2">
+                2. 自宅以外の場所でも、安全が確保できれば試してみたいと思う。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="A" data-question="3">
+                3. 性的グッズやアイテムを調べたり購入したりすることに抵抗がない。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="A" data-question="4">
+                4. "ちょっとハードかも？"と思う提案でもパートナーがOKなら試してみたい。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">B. ライトSM</div>
+            <div class="question" data-category="B" data-question="5">
+                5. 軽い拘束（手錠、アイマスク、ロープなど）に興奮を感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="B" data-question="6">
+                6. 軽めのスパンキング（叩く / 叩かれる）など痛みを伴う刺激に抵抗がない。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="B" data-question="7">
+                7. 主従関係や上下関係をイメージしたプレイに心惹かれる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="B" data-question="8">
+                8. 「ちょっと乱暴に扱われる」または「相手を少し強めに扱う」ことで燃える。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">C. ハードSM</div>
+            <div class="question" data-category="C" data-question="9">
+                9. ピンチクリップやロウソクなど、強い痛み・刺激があるプレイに興味がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="C" data-question="10">
+                10. 屈辱感や辱める・辱められるような精神的支配が大きな興奮につながる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="C" data-question="11">
+                11. 傷跡やアザなど、目に見える形でプレイの痕が残るのを肯定的に捉えられる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="C" data-question="12">
+                12. 自分はサディスト（加虐嗜好）またはマゾヒスト（被虐嗜好）としての自覚がある。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">D. 寝取られ / スワッピング</div>
+            <div class="question" data-category="D" data-question="13">
+                13. パートナーが他人と性行為をするところを想像すると興奮する。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="D" data-question="14">
+                14. 3Pやグループでのプレイに対して、どこか魅力を感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="D" data-question="15">
+                15. 嫉妬や独占欲と性的興奮が結びつく「寝取られシチュエーション」に興味がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="D" data-question="16">
+                16. 他の人のパートナーを"寝取る"行為に対して背徳感と興奮を覚える。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">E. フェティシズム（パーツ・匂い・衣装など）</div>
+            <div class="question" data-category="E" data-question="17">
+                17. 特定の身体パーツ（足、手、首筋など）を見るだけで強く惹かれる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="E" data-question="18">
+                18. パートナーの体臭や下着の匂いなど、嗅覚的要素に強い興奮を感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="E" data-question="19">
+                19. ランジェリーやラバー、コスチュームなど衣装そのものが大きな刺激になる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="E" data-question="20">
+                20. 自分のフェチ対象（下着、靴、写真など）をコレクションしたり眺めるのが好き。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">F. 露出・voyeuristic（覗き見る / 見られる）</div>
+            <div class="question" data-category="F" data-question="21">
+                21. 他人に見られるかもしれないスリルに快感を覚える。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="F" data-question="22">
+                22. 自分の性的行為を第三者に見られていると想像すると興奮する。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="F" data-question="23">
+                23. 誰かの性行為を盗み見る（覗き見る）というシチュエーションに強い関心がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="F" data-question="24">
+                24. 露出やストリップのような大胆なパフォーマンスに憧れがある。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">G. ロールプレイ・非日常</div>
+            <div class="question" data-category="G" data-question="25">
+                25. コスプレやキャラクターになりきって行うプレイが大好き / 興味がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="G" data-question="26">
+                26. 物語や設定を考え、それになりきりながら演じると燃える。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="G" data-question="27">
+                27. ファンタジー世界（騎士と姫、悪魔と生贄など）を想像して盛り上がることがある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="G" data-question="28">
+                28. 言葉責めやセリフ回しなど、演技や会話のシチュエーションに強く興奮を感じる。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="category-title">H. マニアック / エクストリーム嗜好</div>
+            <div class="question" data-category="H" data-question="29">
+                29. 肉体的リスクが高い行為（窒息プレイなど）に強い興味や魅力を感じる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="H" data-question="30">
+                30. 食べ物や体液など、通常タブー視されがちなものと組み合わせるプレイに関心がある。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="H" data-question="31">
+                31. タトゥーやピアッシング、身体改造など「痛みやリスクを伴う」要素に惹かれる。
+                <div class="options"></div>
+            </div>
+            <div class="question" data-category="H" data-question="32">
+                32. 人にはあまり理解されなさそうな特殊な性癖を自覚している。
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <button id="calculate">結果を計算する</button>
+
+        <div id="results" class="results">
+            <h2>分析結果</h2>
+            <div id="category-results"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 選択肢の生成
+            const options = [
+                { value: 3, text: 'はい / 強く当てはまる' },
+                { value: 2, text: 'どちらかといえば当てはまる' },
+                { value: 1, text: 'どちらでもない' },
+                { value: 0, text: 'いいえ / 当てはまらない' }
+            ];
+
+            // 全ての質問に選択肢を追加
+            document.querySelectorAll('.options').forEach(optionsContainer => {
+                options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'option-btn';
+                    button.textContent = option.text;
+                    button.dataset.value = option.value;
+                    button.onclick = function() {
+                        // 同じ質問の他の選択肢から'selected'クラスを削除
+                        optionsContainer.querySelectorAll('.option-btn').forEach(btn => {
+                            btn.classList.remove('selected');
+                        });
+                        // クリックされた選択肢に'selected'クラスを追加
+                        button.classList.add('selected');
+                    };
+                    options
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 選択肢の定義
+    const options = [
+        { value: 3, text: 'はい / 強く当てはまる' },
+        { value: 2, text: 'どちらかといえば当てはまる' },
+        { value: 1, text: 'どちらでもない' },
+        { value: 0, text: 'いいえ / 当てはまらない' }
+    ];
+
+    // すべての質問に選択肢を追加
+    document.querySelectorAll('.options').forEach(optionsContainer => {
+        options.forEach(option => {
+            const button = document.createElement('button');
+            button.className = 'option-btn';
+            button.textContent = option.text;
+            button.dataset.value = option.value;
+            optionsContainer.appendChild(button);
+
+            button.addEventListener('click', function() {
+                // 同じ質問の他の選択肢のselectedを解除
+                optionsContainer.querySelectorAll('.option-btn').forEach(b => {
+                    b.classList.remove('selected');
+                });
+                // クリックされた選択肢をselected状態に
+                this.classList.add('selected');
+            });
+        });
+    });
+
+    // 結果計算ボタンのイベントリスナー
+    document.getElementById('calculate').addEventListener('click', function() {
+        const results = {};
+        const categories = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        
+        // カテゴリーごとの集計
+        categories.forEach(category => {
+            const questions = document.querySelectorAll(`[data-category="${category}"]`);
+            let total = 0;
+            let answered = 0;
+            
+            questions.forEach(question => {
+                const selectedButton = question.querySelector('.option-btn.selected');
+                if (selectedButton) {
+                    total += parseInt(selectedButton.dataset.value);
+                    answered++;
+                }
+            });
+
+            // スコアの計算（回答された質問のみで平均を計算）
+            results[category] = {
+                score: answered > 0 ? total : 0,
+                answered: answered,
+                percentage: answered > 0 ? (total / (answered * 3) * 100).toFixed(1) : 0
+            };
+        });
+
+        // 結果の表示
+        const resultsDiv = document.getElementById('results');
+        const categoryResults = document.getElementById('category-results');
+        categoryResults.innerHTML = '';
+
+        const categoryNames = {
+            'A': 'プレイの幅・冒険心',
+            'B': 'ライトSM',
+            'C': 'ハードSM',
+            'D': '寝取られ/スワッピング',
+            'E': 'フェティシズム',
+            'F': '露出・覗き',
+            'G': 'ロールプレイ・非日常',
+            'H': 'マニアック/エクストリーム'
+        };
+
+        categories.forEach(category => {
+            const result = results[category];
+            const div = document.createElement('div');
+            div.className = 'category-score';
+            
+            div.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <strong>${categoryNames[category]}</strong>
+                    <span>${result.percentage}% (${result.score}点)</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: ${result.percentage}%"></div>
+                </div>
+            `;
+            
+            categoryResults.appendChild(div);
+        });
+
+        resultsDiv.style.display = 'block';
+        resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
